@@ -2,6 +2,7 @@
 using ScreenSoundApi.Modelos;
 using System.Text.Json;
 using ScreenSoundApi.Filtros;
+using ScreenSoundApi;
 
 using (HttpClient cliente = new HttpClient())
 {
@@ -11,7 +12,8 @@ using (HttpClient cliente = new HttpClient())
         var musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!;
         //FiltroLinq.FiltrarGenerosMusicais(musicas);
         //OrdenadorLinq.ExibirArtistasOrdenados(musicas);
-        FiltroLinq.FiltrarArtistasPorGenero(musicas, "pop");
+        //FiltroLinq.FiltrarArtistasPorGenero(musicas, "pop");
+        FiltroLinq.FiltrarMusicasPorArtista(musicas, "Red Hot Chili Peppers");
     }
     catch (Exception ex)
     {
