@@ -16,6 +16,7 @@ namespace ScreenSoundApi.Modelos
             Nome = nome;
             listaDeMusicasFavoritas = new List<Musica>();
         }
+
         public string? Nome { get; set; }
         public IEnumerable<Musica> MusicasFavoritas => listaDeMusicasFavoritas;
 
@@ -44,6 +45,21 @@ namespace ScreenSoundApi.Modelos
             string nomeArquivo = $"musicas_favoritas_{Nome}.json";
             File.WriteAllText(nomeArquivo, json);
             Console.WriteLine($"Arquivo json criado com sucesso {Path.GetFullPath(nomeArquivo)}");
+            Thread.Sleep(2000);
+        }
+        public void GerarArquivoTXT()
+        {
+            string nomeArquivo = $"musicas_favoritas_{Nome}.txt";
+            using(StreamWriter arquivo = new StreamWriter(nomeArquivo))
+            {
+                arquivo.WriteLine($"Estas são as músicas favoritas do(a) {Nome}");
+                arquivo.WriteLine();
+                foreach (var musica in MusicasFavoritas)
+                {
+                    arquivo.WriteLine($"Musica: {musica.Nome} - Artista: {musica.Artista}");
+                }
+            }
+            Console.WriteLine($"Arquivo txt criado com sucesso! {Path.GetFullPath(nomeArquivo)}");
             Thread.Sleep(2000);
         }
     }

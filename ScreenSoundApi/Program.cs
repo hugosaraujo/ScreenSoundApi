@@ -24,7 +24,7 @@ using (HttpClient cliente = new HttpClient())
         musicasPreferidas.AdicionarMusica(musicas[870]);
         musicasPreferidas.AdicionarMusica(musicas[987]);
         musicasPreferidas.ExibirMusicas();
-        musicasPreferidas.GerarArquivoJson();
+        musicasPreferidas.GerarArquivoTXT();
     }
     catch (Exception ex)
     {
