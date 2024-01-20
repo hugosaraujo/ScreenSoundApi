@@ -6,6 +6,8 @@ namespace ScreenSoundApi.Modelos;
 
 internal class Musica
 {
+    private List<string> tonalide = new List<string>(){"C","C#","D","D#","E","F","F#", "G","G#","A","A#","B"};
+    
     [JsonPropertyName("song")]
     public string? Nome { get; set; }
     [JsonPropertyName("artist")]
@@ -14,6 +16,14 @@ internal class Musica
     public int Duracao { get; set; }
     [JsonPropertyName("genre")]
     public string? Genero { get; set; }
+    [JsonPropertyName("key")]
+    public int Key { get; set; }
+    public string Tonalidade { 
+        get
+        {
+            return tonalide[Key];
+        }
+    }
     [JsonPropertyName("year")]
     public string? AnoString { get; set; }
     public int Ano 
@@ -30,5 +40,6 @@ internal class Musica
         Console.WriteLine($"Artista: {Artista}");
         Console.WriteLine($"Duracao: {Duracao/1000}");
         Console.WriteLine($"Genero Musical: {Genero}");
+        Console.WriteLine($"Tonalidade: {Tonalidade}");
     }
 }

@@ -59,4 +59,17 @@ internal class FiltroLinq
             Console.WriteLine($"- {musica}");
         }
     }
+    public static void FiltrarMusicaPorTonalidade(List<Musica> musicas, string tonalidade)
+    {
+        var musicasPorTonalidade = musicas.Where(musica => musica.Tonalidade.Equals(tonalidade))
+            .OrderBy(musica => musica.Nome)
+            .Select(musica => musica.Nome)
+            .Distinct()
+            .ToList();
+        Console.WriteLine($"Exibindo uma lista de músicas pela tonalidade -> {tonalidade}");
+        foreach (var musica in musicasPorTonalidade)
+        {
+            Console.WriteLine($"- {musica}");
+        }
+    }
 }
